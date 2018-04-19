@@ -16,22 +16,22 @@ namespace Simplexity
             Player player1 = new Player();
             Player player2 = new Player();
 
-            while (!winChecker.IsDraw(board) && winChecker.Check(board) == State.Undecided)
+            while (!winChecker.IsDraw(grid) && winChecker.Check(grid) == State.Undecided)
             {
-                renderer.Render(board);
+                renderer.Render(grid);
 
                 Position nextMove;
-                if (board.NextTurn == State.X)
-                    nextMove = player1.GetPosition(board);
+                if (grid.NextTurn == State.W)
+                    nextMove = player1.GetPosition(grid);
                 else
-                    nextMove = player2.GetPosition(board);
+                    nextMove = player2.GetPosition(grid);
 
-                if (!board.SetState(nextMove, board.NextTurn))
+                if (!grid.SetState(nextMove, grid.NextTurn))
                     Console.WriteLine("That is not a legal move.");
             }
 
-            renderer.Render(board);
-            renderer.RenderResults(winChecker.Check(board));
+            renderer.Render(grid);
+            renderer.RenderResults(winChecker.Check(grid));
 
             Console.ReadKey();
         }
