@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
-    class Class1
-    {
-    }
+    public enum State { Undecided, W, R, w, r};
 }
