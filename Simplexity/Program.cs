@@ -15,22 +15,32 @@ namespace Simplexity
             Renderer renderer = new Renderer();
             Player player1 = new Player();
             Player player2 = new Player();
+            int rowChecker = 0;
 
-            while (!winChecker.IsDraw(grid) && winChecker.Check(grid) == State.Undecided)
+
+            while (!winChecker.IsDraw(grid, rowChecker) && winChecker.Check(grid) == State.Undecided)
             {
-                renderer.Render(grid);
+                renderer.Render(grid, rowChecker);
 
                 Position nextMove;
                 if (grid.NextTurn == State.W)
-                    nextMove = player1.GetPosition(grid);
+                {
+                    nextMove = player1.GetPosition(grid, rowChecker);
+                    //Console.WriteLine(() + "_1");
+                }
+                    
                 else
-                    nextMove = player2.GetPosition(grid);
+                {
+                    nextMove = player2.GetPosition(grid, rowChecker);
+                    //Console.WriteLine(nextMove.ToString() + "_2");
+                }
+                    
 
-                if (!grid.SetState(nextMove, grid.NextTurn))
+                if (!grid.SetState(nextMove, grid.NextTurn, rowChecker))
                     Console.WriteLine("That is not a legal move.");
             }
 
-            renderer.Render(grid);
+            renderer.Render(grid, rowChecker);
             renderer.RenderResults(winChecker.Check(grid));
 
             Console.ReadKey();

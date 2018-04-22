@@ -8,12 +8,12 @@ namespace Simplexity
 {
     public class Renderer
     {
-        public void Render(Grid grid)
+        public void Render(Grid grid, int rowChecker)
         {
             char[,] symbols = new char[7, 7];
             for (int row = 0; row < 7; row++)
                 for (int column = 0; column < 7; column++)
-                    symbols[row, column] = SymbolFor(grid.GetState(new Position(row, column)));
+                    symbols[row, column] = SymbolFor(grid.GetState(new Position(row, column), rowChecker));
 
             Console.WriteLine($" {symbols[0, 0]} | {symbols[0, 1]} | {symbols[0, 2]} | {symbols[0, 3]} | {symbols[0, 4]} | {symbols[0, 5]} | {symbols[0, 6]} ");
             Console.WriteLine("---+---+---+---+---+---+---");

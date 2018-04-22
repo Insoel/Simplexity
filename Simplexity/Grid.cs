@@ -8,6 +8,7 @@ namespace Simplexity
 {
     public class Grid
     {
+        
         public State[,] state;
         public State NextTurn { get; private set; }
 
@@ -21,15 +22,26 @@ namespace Simplexity
             return state[position.Row, position.Column];
         }
 
-        public bool SetState(Position position, State newState)
+        public State GetState(Position position, int rowChecker)
         {
-            if (newState != NextTurn) return false;
-            if (state[position.Row, position.Column] != State.Undecided) return false;
+            return state[position.Row - rowChecker, position.Column];
+        }
 
-            state[position.Row, position.Column] = newState;
+        public bool SetState(Position position, State newState, int rowChecker2)
+        {
+            //Console.WriteLine((position.Row - rowChecker) + "_" + (position.Column) + "_" + state[position.Row - rowChecker, position.Column] + "_" + rowChecker);
+            //Console.WriteLine(newState.ToString() + "_" + NextTurn.ToString());
+            if (newState != NextTurn) return false;
+           // Console.WriteLine(state[position.Row - rowChecker2, position.Column] + "_R" + rowChecker2 + "_P" + position.Row);
+            //if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
+            
+
+            state[position.Row - rowChecker2, position.Column] = newState;
+            //Console.WriteLine(state[4, 4].ToString());
             SwitchNextTurn();
             return true;
         }
+
 
         private void SwitchNextTurn()
         {
@@ -39,17 +51,21 @@ namespace Simplexity
 
         public int RowInUse(int position, int rowChecker)
         {
-            Position pos = new Position(position, 6 - rowChecker);
-            if (state[pos.Row, pos.Column] != State.Undecided)
-            {
-                if (rowChecker < 7)
+            Position pos = new Position(6 - rowChecker, position - 1);
+            
+            //state[position, 6 - rowChecker] = 
+            //Console.WriteLine(state[pos.Row, pos.Column].ToString() + "_" + State.Undecided.ToString() + "_" + rowChecker);
+            //Console.WriteLine(linha + "_" + coluna);
+            //Console.WriteLine(pos.Row + "_" + rowChecker + "_" + pos.Column + "_" + (6 - rowChecker));
+            //Console.WriteLine(state[pos.Row - rowChecker, pos.Column].ToString());
+            if (state[pos.Row, (pos.Column)] != State.Undecided && rowChecker < 6)
                 {
                     rowChecker++;
                     Console.WriteLine(rowChecker);
-                    RowInUse(position, rowChecker);
+                //RowInUse(position, rowChecker);
+                return RowInUse(position, rowChecker);
+
                 }
-            }
-                
             return rowChecker;
         }
 

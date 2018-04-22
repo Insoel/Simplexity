@@ -192,11 +192,11 @@ namespace Simplexity
 
 
 
-        public bool IsDraw(Grid grid)
+        public bool IsDraw(Grid grid, int rowChecker)
         {
             for (int row = 0; row < 7; row++)
                 for (int column = 0; column < 7; column++)
-                    if (grid.GetState(new Position(row, column)) == State.Undecided) return false;
+                    if (grid.GetState(new Position(row, column), rowChecker) == State.Undecided) return false;
 
             return true;
         }
