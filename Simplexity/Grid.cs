@@ -10,12 +10,12 @@ namespace Simplexity
     {
         
         public State[,] state;
-        public Player NextTurn { get; private set; }
-        public State NextTurn2 { get; private set; }
+        public Player NextTurn { get; private set; } //Defines which player goes
+        public State NextTurn2 { get; private set; } //Defines which piece the player uses
 
         public Grid()
         {
-            state = new State[7, 7];
+            state = new State[7, 7]; // 7 by 7 grid
         }
 
         public State GetState(Position position)
@@ -28,7 +28,7 @@ namespace Simplexity
             return state[position.Row - rowChecker, position.Column];
         }
 
-        public bool SetState(Position position, Player playerState, State newState, int rowChecker2)
+        public bool SetState(Position position, Player playerState, State newState, int rowChecker2) //Method that checks if a move is valid and then sets it on that position if it is
         {
             if (playerState != NextTurn) return false;
             if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
@@ -50,7 +50,7 @@ namespace Simplexity
         }
 
 
-        private void SwitchNextTurn()
+        private void SwitchNextTurn() //Method that checks current turn and swaps the player and piece used around
         {
             if (NextTurn == Player.p1)
             {
@@ -64,7 +64,8 @@ namespace Simplexity
             }
         }
 
-        public int RowInUse(int position, int rowChecker)
+        public int RowInUse(int position, int rowChecker)   //Method that checks if the current row that the piece is falling on is being used, 
+                                                            // if so it then calls itself and checks again on the row above and so on until it reaches an open row
         {
             Position pos = new Position(6 - rowChecker, position - 1);
             if (state[pos.Row, (pos.Column)] != State.Undecided && rowChecker < 6)

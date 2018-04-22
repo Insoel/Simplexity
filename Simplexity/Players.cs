@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
-    public enum Player { p1, p2 }
+    public enum Player { p1, p2 } //Player 1 or 2
 }

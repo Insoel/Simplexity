@@ -8,7 +8,7 @@ namespace Simplexity
 {
     public class Renderer
     {
-        public void Render(Grid grid, int rowChecker)
+        public void Render(Grid grid, int rowChecker) //Draws the grid
         {
             char[,] symbols = new char[7, 7];
             for (int row = 0; row < 7; row++)
@@ -32,7 +32,7 @@ namespace Simplexity
             Console.WriteLine($" 1 | 2 | 3 | 4 | 5 | 6 | 7 ");
         }
 
-        private char SymbolFor(State state)
+        private char SymbolFor(State state) //Converts the State into a char to display it in a grid setting
         {
             switch (state)
             {
@@ -44,7 +44,7 @@ namespace Simplexity
             }
         }
 
-        public void RenderResults(State winner)
+        public void RenderResults(State winner) //Shows results to the user
         {
             switch (winner)
             {

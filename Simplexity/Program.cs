@@ -15,7 +15,7 @@ namespace Simplexity
             Renderer renderer = new Renderer();
             Moves player1 = new Moves();
             Moves player2 = new Moves();
-            int rowChecker = 0;
+            int rowChecker = 0; // Var that tell the method which row it is supposed to check for an open space
 
             Console.WriteLine("Welcome to my wannabe Simplexity Game \n");
             Console.WriteLine("Here are the rules:\n");
@@ -24,20 +24,20 @@ namespace Simplexity
             Console.WriteLine(" - First one to score 4 in a line with either Lowercase or Uppercase Wins. \n ");
             Console.WriteLine("Ready to play? (Y/N)");
 
-            string answer = Console.ReadLine();
+            string answer = Console.ReadLine(); //String checks if the player wants to start the gameloop
 
             if (answer == "Y" || answer == "y")
             {
-                bool first = true;
+                bool first = true; //Var that checks if it's the first turn
                 while (!winChecker.IsDraw(grid, rowChecker) && winChecker.Check(grid) == State.Undecided)
                 {
 
 
 
-                    renderer.Render(grid, rowChecker);
+                    renderer.Render(grid, rowChecker); //Renders the grid every loop
 
 
-                    Position nextMove;
+                    Position nextMove; //Recieves the input from the player and assigns it to this var.
                     if (grid.NextTurn == Player.p1)
                     {
                         if (first != false)
