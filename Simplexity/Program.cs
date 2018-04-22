@@ -13,34 +13,48 @@ namespace Simplexity
             Grid grid = new Grid();
             WinChecker winChecker = new WinChecker();
             Renderer renderer = new Renderer();
-            Player player1 = new Player();
-            Player player2 = new Player();
+            Moves player1 = new Moves();
+            Moves player2 = new Moves();
             int rowChecker = 0;
 
+            Console.WriteLine("Welcome to my wannabe Simplexity Game \n");
+            Console.WriteLine("Here are the rules:\n");
+            Console.WriteLine(" - Press from 1 to 7 to choose the column you want to put your piece on. \n");
+            Console.WriteLine(" - Player 1 goes first, and is the white pieces. \n");
+            Console.WriteLine(" - First one to score 4 in a line with either Lowercase or Uppercase Wins. \n ");
+            Console.WriteLine("Ready to play? (Y/N)");
 
-            while (!winChecker.IsDraw(grid, rowChecker) && winChecker.Check(grid) == State.Undecided)
+            string answer = Console.ReadLine();
+
+            if (answer == "Y" || answer == "y")
             {
+                while (!winChecker.IsDraw(grid, rowChecker) && winChecker.Check(grid) == State.Undecided)
+                {
+
+
+
+                    renderer.Render(grid, rowChecker);
+
+
+                    Position nextMove;
+                    if (grid.NextTurn == Player.p1)
+                    {
+                        nextMove = player1.GetPosition(grid, rowChecker);
+                    }
+                    else
+                    {
+                        nextMove = player2.GetPosition(grid, rowChecker);
+                    }
+
+
+                    if (!grid.SetState(nextMove, grid.NextTurn, grid.NextTurn2, rowChecker))
+                        Console.WriteLine("That is not a legal move.");
+                }
+
                 renderer.Render(grid, rowChecker);
-
-                Position nextMove;
-                if (grid.NextTurn == State.W)
-                {
-                    nextMove = player1.GetPosition(grid, rowChecker);
-                }
-                else
-                {
-                    nextMove = player2.GetPosition(grid, rowChecker);
-                }
-                    
-
-                if (!grid.SetState(nextMove, grid.NextTurn, rowChecker))
-                    Console.WriteLine("That is not a legal move.");
+                renderer.RenderResults(winChecker.Check(grid));
             }
-
-            renderer.Render(grid, rowChecker);
-            renderer.RenderResults(winChecker.Check(grid));
-
-            Console.ReadKey();
+            Console.WriteLine("I'll see ya next time, goodbye!");
         }
     }
 }

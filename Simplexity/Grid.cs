@@ -10,7 +10,8 @@ namespace Simplexity
     {
         
         public State[,] state;
-        public State NextTurn { get; private set; }
+        public Player NextTurn { get; private set; }
+        public State NextTurn2 { get; private set; }
 
         public Grid()
         {
@@ -27,9 +28,9 @@ namespace Simplexity
             return state[position.Row - rowChecker, position.Column];
         }
 
-        public bool SetState(Position position, State newState, int rowChecker2)
+        public bool SetState(Position position, Player playerState, State newState, int rowChecker2)
         {
-            if (newState != NextTurn) return false;
+            if (playerState != NextTurn) return false;
             if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
             state[position.Row - rowChecker2, position.Column] = newState;
             SwitchNextTurn();
@@ -39,8 +40,16 @@ namespace Simplexity
 
         private void SwitchNextTurn()
         {
-            if (NextTurn == State.W) NextTurn = State.R;
-            else NextTurn = State.W;
+            if (NextTurn == Player.p2)
+            {
+                NextTurn = Player.p1;
+                NextTurn2 = State.W;
+            }
+            else
+            {
+                NextTurn = Player.p2;
+                NextTurn2 = State.R;
+            }
         }
 
         public int RowInUse(int position, int rowChecker)
@@ -49,7 +58,6 @@ namespace Simplexity
             if (state[pos.Row, (pos.Column)] != State.Undecided && rowChecker < 6)
                 {
                     rowChecker++;
-                    Console.WriteLine(rowChecker);
                 return RowInUse(position, rowChecker);
 
                 }

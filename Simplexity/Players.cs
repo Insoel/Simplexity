@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
-    public enum State { Undecided, W, R, w, r};
+    public enum Player { p1, p2 }
 }
-
-

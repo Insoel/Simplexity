@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
-    public class Player
+    public class Moves
     {
         public Position GetPosition(Grid grid, int rowChecker)
         {
