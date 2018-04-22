@@ -26,13 +26,10 @@ namespace Simplexity
                 if (grid.NextTurn == State.W)
                 {
                     nextMove = player1.GetPosition(grid, rowChecker);
-                    //Console.WriteLine(() + "_1");
                 }
-                    
                 else
                 {
                     nextMove = player2.GetPosition(grid, rowChecker);
-                    //Console.WriteLine(nextMove.ToString() + "_2");
                 }
                     
 

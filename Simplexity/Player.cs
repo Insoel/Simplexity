@@ -18,16 +18,10 @@ namespace Simplexity
 
         public Position PositionForNumber(int position, Grid grid, int rowChecker)
         {
-
-            
-            
-            //int rowChecker2 = grid.RowInUse(position, rowChecker);
             int rowChecker2 = grid.RowInUse(position, rowChecker);
-            Console.WriteLine( "_test" + rowChecker2);
             switch (position)
             {
-                case 1:
-                    return new Position(6 - rowChecker2, 0); // Bottom Left
+                case 1: return new Position(6 - rowChecker2, 0); // Bottom Left
                 case 2: return new Position(6 - rowChecker2, 1); // Bottom Middle 
                 case 3: return new Position(6 - rowChecker2, 2); // Bottom Right
                 case 4: return new Position(6 - rowChecker2, 3); // Middle Left
