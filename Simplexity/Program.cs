@@ -42,19 +42,21 @@ namespace Simplexity
                     {
                         if (first != false)
                         {
-                            Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
-                            answer = Console.ReadLine();
+                            //Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
+                            //answer = Console.ReadLine();
                             Console.WriteLine("Player 1, choose which column to put your piece on");
                             nextMove = player1.GetPosition(grid, rowChecker);
                             first = false;
                             if (!grid.SetState(nextMove, grid.NextTurn, grid.NextTurn2, rowChecker, first))
-                            { }
+                            {
+
+                            }
                                 
                         }
                         else
                         {
-                            Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
-                            answer = Console.ReadLine();
+                            //Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
+                            //answer = Console.ReadLine();
                             Console.WriteLine("Player 1, choose which column to put your piece on");
                             nextMove = player1.GetPosition(grid, rowChecker);
                         }
@@ -62,8 +64,8 @@ namespace Simplexity
                     }
                     else
                     {
-                        Console.WriteLine("Player 2, choose your piece. Cilinder or Cube?");
-                        answer = Console.ReadLine();
+                        //Console.WriteLine("Player 2, choose your piece. Cilinder or Cube?");
+                        //answer = Console.ReadLine();
                         Console.WriteLine("Player 2, choose which column to put your piece on");
                         nextMove = player2.GetPosition(grid, rowChecker);
                     }
