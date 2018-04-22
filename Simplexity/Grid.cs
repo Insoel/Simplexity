@@ -8,7 +8,7 @@ namespace Simplexity
 {
     public class Grid
     {
-        private State[,] state;
+        public State[,] state;
         public State NextTurn { get; private set; }
 
         public Grid()
@@ -35,6 +35,22 @@ namespace Simplexity
         {
             if (NextTurn == State.W) NextTurn = State.R;
             else NextTurn = State.W;
+        }
+
+        public int RowInUse(int position, int rowChecker)
+        {
+            Position pos = new Position(position, 6 - rowChecker);
+            if (state[pos.Row, pos.Column] != State.Undecided)
+            {
+                if (rowChecker < 7)
+                {
+                    rowChecker++;
+                    Console.WriteLine(rowChecker);
+                    RowInUse(position, rowChecker);
+                }
+            }
+                
+            return rowChecker;
         }
 
     }

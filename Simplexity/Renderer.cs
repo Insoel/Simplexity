@@ -28,6 +28,7 @@ namespace Simplexity
             Console.WriteLine($" {symbols[5, 0]} | {symbols[5, 1]} | {symbols[5, 2]} | {symbols[5, 3]} | {symbols[5, 4]} | {symbols[5, 5]} | {symbols[5, 6]} ");
             Console.WriteLine("---+---+---+---+---+---+---");
             Console.WriteLine($" {symbols[6, 0]} | {symbols[6, 1]} | {symbols[6, 2]} | {symbols[6, 3]} | {symbols[6, 4]} | {symbols[6, 5]} | {symbols[6, 6]} ");
+            Console.WriteLine("---+---+---+---+---+---+---");
 
         }
 
