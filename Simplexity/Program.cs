@@ -39,16 +39,20 @@ namespace Simplexity
                     Position nextMove;
                     if (grid.NextTurn == Player.p1)
                     {
+                        Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
+                        answer = Console.ReadLine();
                         nextMove = player1.GetPosition(grid, rowChecker);
                     }
                     else
                     {
+                        Console.WriteLine("Player 2, choose your piece. Cilinder or Cube?");
+                        answer = Console.ReadLine();
                         nextMove = player2.GetPosition(grid, rowChecker);
                     }
 
 
                     if (!grid.SetState(nextMove, grid.NextTurn, grid.NextTurn2, rowChecker))
-                        Console.WriteLine("That is not a legal move.");
+                        Console.WriteLine("That is not a valid move.");
                 }
 
                 renderer.Render(grid, rowChecker);
