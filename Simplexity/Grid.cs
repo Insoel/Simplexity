@@ -34,21 +34,33 @@ namespace Simplexity
             if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
             state[position.Row - rowChecker2, position.Column] = newState;
             SwitchNextTurn();
+
+            return true;
+        }
+
+        public bool SetState(Position position, Player playerState, State newState, int rowChecker2, bool first)
+        {
+            if (playerState != NextTurn) return false;
+            if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
+            newState = State.W;
+            state[position.Row - rowChecker2, position.Column] = newState;
+            SwitchNextTurn();
+
             return true;
         }
 
 
         private void SwitchNextTurn()
         {
-            if (NextTurn == Player.p2)
-            {
-                NextTurn = Player.p1;
-                NextTurn2 = State.W;
-            }
-            else
+            if (NextTurn == Player.p1)
             {
                 NextTurn = Player.p2;
                 NextTurn2 = State.R;
+            }
+            else
+            {
+                NextTurn = Player.p1;
+                NextTurn2 = State.W;
             }
         }
 

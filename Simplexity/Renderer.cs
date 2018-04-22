@@ -29,7 +29,7 @@ namespace Simplexity
             Console.WriteLine("---+---+---+---+---+---+---");
             Console.WriteLine($" {symbols[6, 0]} | {symbols[6, 1]} | {symbols[6, 2]} | {symbols[6, 3]} | {symbols[6, 4]} | {symbols[6, 5]} | {symbols[6, 6]} ");
             Console.WriteLine("---+---+---+---+---+---+---");
-
+            Console.WriteLine($" 1 | 2 | 3 | 4 | 5 | 6 | 7 ");
         }
 
         private char SymbolFor(State state)

@@ -28,6 +28,7 @@ namespace Simplexity
 
             if (answer == "Y" || answer == "y")
             {
+                bool first = true;
                 while (!winChecker.IsDraw(grid, rowChecker) && winChecker.Check(grid) == State.Undecided)
                 {
 
@@ -39,14 +40,31 @@ namespace Simplexity
                     Position nextMove;
                     if (grid.NextTurn == Player.p1)
                     {
-                        Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
-                        answer = Console.ReadLine();
-                        nextMove = player1.GetPosition(grid, rowChecker);
+                        if (first != false)
+                        {
+                            Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
+                            answer = Console.ReadLine();
+                            Console.WriteLine("Player 1, choose which column to put your piece on");
+                            nextMove = player1.GetPosition(grid, rowChecker);
+                            first = false;
+                            if (!grid.SetState(nextMove, grid.NextTurn, grid.NextTurn2, rowChecker, first))
+                            { }
+                                
+                        }
+                        else
+                        {
+                            Console.WriteLine("Player 1, choose your piece. Cilinder or Cube?");
+                            answer = Console.ReadLine();
+                            Console.WriteLine("Player 1, choose which column to put your piece on");
+                            nextMove = player1.GetPosition(grid, rowChecker);
+                        }
+                        
                     }
                     else
                     {
                         Console.WriteLine("Player 2, choose your piece. Cilinder or Cube?");
                         answer = Console.ReadLine();
+                        Console.WriteLine("Player 2, choose which column to put your piece on");
                         nextMove = player2.GetPosition(grid, rowChecker);
                     }
 
