@@ -8,7 +8,13 @@ namespace Simplexity
 {
     public class Moves
     {
-        public Position GetPosition(Grid grid, int rowChecker) //Gets an input from the user and converts it to a position in the grid
+        /// <summary>
+        /// Gets an input from the user and converts it to a position in the grid
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="rowChecker"></param>
+        /// <returns></returns>
+        public Position GetPosition(Grid grid, int rowChecker)
         {
             int position = Convert.ToInt32(Console.ReadLine());
             Position desiredCoordinate = PositionForNumber(position, grid, rowChecker);
@@ -16,8 +22,15 @@ namespace Simplexity
             return desiredCoordinate;
         }
 
-        public Position PositionForNumber(int position, Grid grid, int rowChecker)  //After getting the position, the method calls another one to check if that row is open for the piece,
-                                                                                    //if it isn't it then it returns the rowChecker which lets this method know in which row to place it
+        /// <summary>
+        /// After getting the position, the method calls another one to check if that row is open for the piece, if it isn't it then it returns the rowChecker which lets this method know in which row to place it
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="grid"></param>
+        /// <param name="rowChecker"></param>
+        /// <returns></returns>
+        public Position PositionForNumber(int position, Grid grid, int rowChecker)  
+                                                                                    
         {
             int rowChecker2 = grid.RowInUse(position, rowChecker);
             switch (position)

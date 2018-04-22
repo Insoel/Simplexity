@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
+    /// <summary>
+    /// Class that draws the grid every game loop 
+    /// </summary>
     public class Renderer
     {
-        public void Render(Grid grid, int rowChecker) //Draws the grid
+        /// <summary>
+        /// Draws the grid
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="rowChecker"></param>
+        public void Render(Grid grid, int rowChecker)
         {
             char[,] symbols = new char[7, 7];
             for (int row = 0; row < 7; row++)
@@ -31,8 +39,12 @@ namespace Simplexity
             Console.WriteLine("---+---+---+---+---+---+---");
             Console.WriteLine($" 1 | 2 | 3 | 4 | 5 | 6 | 7 ");
         }
-
-        private char SymbolFor(State state) //Converts the State into a char to display it in a grid setting
+        /// <summary>
+        /// Converts the State into a char to display it in a grid setting
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        private char SymbolFor(State state)
         {
             switch (state)
             {
@@ -43,8 +55,11 @@ namespace Simplexity
                 default: return ' ';
             }
         }
-
-        public void RenderResults(State winner) //Shows results to the user
+        /// <summary>
+        /// Shows results to the user
+        /// </summary>
+        /// <param name="winner"></param>
+        public void RenderResults(State winner)
         {
             switch (winner)
             {

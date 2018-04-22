@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Simplexity
 {
+    /// <summary>
+    /// Class Grid that gets the positions/states and sets the positions/states
+    /// </summary>
     public class Grid
     {
         
@@ -13,9 +16,12 @@ namespace Simplexity
         public Player NextTurn { get; private set; } //Defines which player goes
         public State NextTurn2 { get; private set; } //Defines which piece the player uses
 
+        /// <summary>
+        /// Creates a  7 by 7 array/grid
+        /// </summary>
         public Grid()
         {
-            state = new State[7, 7]; // 7 by 7 grid
+            state = new State[7, 7];
         }
 
         public State GetState(Position position)
@@ -28,7 +34,15 @@ namespace Simplexity
             return state[position.Row - rowChecker, position.Column];
         }
 
-        public bool SetState(Position position, Player playerState, State newState, int rowChecker2) //Method that checks if a move is valid and then sets it on that position if it is
+        /// <summary>
+        /// Method that checks if a move is valid and then sets it on that position if it is
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="playerState"></param>
+        /// <param name="newState"></param>
+        /// <param name="rowChecker2"></param>
+        /// <returns></returns>
+        public bool SetState(Position position, Player playerState, State newState, int rowChecker2)
         {
             if (playerState != NextTurn) return false;
             if (state[position.Row - rowChecker2, position.Column] != State.Undecided) return false;
@@ -38,6 +52,15 @@ namespace Simplexity
             return true;
         }
 
+        /// <summary>
+        /// Method that checks if a move is valid and then sets it on that position if it is
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="playerState"></param>
+        /// <param name="newState"></param>
+        /// <param name="rowChecker2"></param>
+        /// <param name="first"></param>
+        /// <returns></returns>
         public bool SetState(Position position, Player playerState, State newState, int rowChecker2, bool first)
         {
             if (playerState != NextTurn) return false;
@@ -49,8 +72,10 @@ namespace Simplexity
             return true;
         }
 
-
-        private void SwitchNextTurn() //Method that checks current turn and swaps the player and piece used around
+        /// <summary>
+        /// Method that checks current turn and swaps the player and piece used around
+        /// </summary>
+        private void SwitchNextTurn()
         {
             if (NextTurn == Player.p1)
             {
@@ -63,9 +88,13 @@ namespace Simplexity
                 NextTurn2 = State.W;
             }
         }
-
-        public int RowInUse(int position, int rowChecker)   //Method that checks if the current row that the piece is falling on is being used, 
-                                                            // if so it then calls itself and checks again on the row above and so on until it reaches an open row
+        /// <summary>
+        /// Method that checks if the current row that the piece is falling on is being used, if so it then calls itself and checks again on the row above and so on until it reaches an open row
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="rowChecker"></param>
+        /// <returns></returns>
+        public int RowInUse(int position, int rowChecker)                                               
         {
             Position pos = new Position(6 - rowChecker, position - 1);
             if (state[pos.Row, (pos.Column)] != State.Undecided && rowChecker < 6)

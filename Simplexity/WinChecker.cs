@@ -182,7 +182,14 @@ namespace Simplexity
             return false;
         }
 
-        private bool AreAll(Grid grid, Position[] positions, State state) // Checks all the positions inside the method if they are all a certain piece type or color
+        /// <summary>
+        /// Checks all the positions inside the method if they are all a certain piece type or color
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="positions"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        private bool AreAll(Grid grid, Position[] positions, State state)
         {
             foreach (Position position in positions)
                 if (grid.GetState(position) != state) return false;
@@ -191,8 +198,13 @@ namespace Simplexity
         }
 
 
-
-        public bool IsDraw(Grid grid, int rowChecker)           //Checks every row and column for any open spaces, if there aren't any game ends in a draw
+        /// <summary>
+        /// Checks every row and column for any open spaces, if there aren't any game ends in a draw
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="rowChecker"></param>
+        /// <returns></returns>
+        public bool IsDraw(Grid grid, int rowChecker)           
         {
             for (int row = 0; row < 7; row++)
                 for (int column = 0; column < 7; column++)
