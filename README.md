@@ -38,9 +38,9 @@ se sim o método torna-se recursivo e vai-se repetindo até encontrar um espaço
 
 Na classe State temos uma enumeração que define qual é o State das posições.
 
-Na classe Position usamos para criar dois valores para podermos passar esses números para a grid.
+Na classe Position usamos um variavel do tipo Position para criar dois valores para podermos passar esses números para a grid.
 
-Na classe Winchecker temos muitos ciclos for que verificar a grid toda de varias maneiras a verificar se há condição de vitoria ou empate.
+Na classe Winchecker temos muitos ciclos for que verifica a grid toda de varias maneiras a ver se há condição de vitoria ou empate.
 
 Na classe Renderer criamos uma grid com | e -, e dentro dos quadrados colocamos o valor dos State para indicar ao utilizador as posições.
 
@@ -61,5 +61,5 @@ aprofundamos também conhecimentos de como usar as classes e a sua organização
 
 
 ###### Referências: 
-Usamos como referência base o tal jogo do galo apresentado nas aulas, fomos alterando a estrutura base até termos algo funcional 
-Falamos também com vários colegas sobre como eles implementaram certas classes deles, como por exemplo o exercício resolvido pelo Rui em que verificar as condições de vitoria.
+Usamos como referência base o tal jogo do galo apresentado nas aulas, fomos alterando a estrutura base até termos algo funcional.
+Falamos também com vários colegas sobre como eles implementaram certas classes deles, como por exemplo o exercício resolvido pelo Rui em que verifica as condições de vitoria.
